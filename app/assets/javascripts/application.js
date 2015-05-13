@@ -15,14 +15,21 @@
 //= require_tree .
 
 $(document).ready(function() {
-  $(".buy-shoes").on("click", function() {
+  $("button.buy-shoes").on("click", function() {
+    var material = $("input.buy-shoes").val();
+    $("input.buy-shoes").val('');
     $.ajax({
       type: "POST",
       url: "/shoes",
-      data: { "shoe": { "material": "leather" } },
+      data: { "shoe": { "material": material } },
       success: function(data) {
-          console.log(data.material);
-          $(".shoe-rack").append("<h1>" + data.material + "</h1>");
+          var tr = "<tr>"
+          tr = tr + "<td>" + data.material + "</td>"
+          tr = tr + "<td><a href='/shoes/" + data.id + "'>Show</a></td>"
+          tr = tr + "<td><a href='/shoes/" + data.id + "/edit'" + ">Edit</a></td>"
+          tr = tr + "<td><a href='/shoes/" + data.id + "' data-method='delete'>Destroy</a></td>"
+          tr = tr + "</tr>"
+          $("tbody").append(tr);
       }
     })
   });
