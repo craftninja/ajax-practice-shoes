@@ -27,7 +27,7 @@ $(document).ready(function() {
           tr = tr + "<td>" + data.material + "</td>"
           tr = tr + "<td><a href='/shoes/" + data.id + "'>Show</a></td>"
           tr = tr + "<td><a href='/shoes/" + data.id + "/edit'" + ">Edit</a></td>"
-          tr = tr + "<td><a href='/shoes/" + data.id + "' data-method='delete'>Destroy</a></td>"
+          tr = tr + "<td><a href='/shoes/" + data.id + "' data-confirm='Are you sure?' rel='nofollow' data-method='delete'>Destroy</a></td>"
           tr = tr + "</tr>"
           $("tbody").append(tr);
       }
