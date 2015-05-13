@@ -16,6 +16,13 @@
 
 $(document).ready(function() {
   $(".buy-shoes").on("click", function() {
-    alert("Oh Hai!");
+    $.ajax({
+      type: "POST",
+      url: "/shoes",
+      data: { "shoe": { "material": "leather" } },
+      success: function(data) {
+          console.log(data)
+      }
+    })
   });
 })
