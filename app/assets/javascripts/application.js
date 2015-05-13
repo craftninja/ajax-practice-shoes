@@ -21,7 +21,8 @@ $(document).ready(function() {
       url: "/shoes",
       data: { "shoe": { "material": "leather" } },
       success: function(data) {
-          console.log(data)
+          console.log(data.material);
+          $(".shoe-rack").append("<h1>" + data.material + "</h1>");
       }
     })
   });
